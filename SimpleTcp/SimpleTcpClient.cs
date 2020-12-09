@@ -282,7 +282,9 @@ namespace SimpleTcp
                     if (_Settings.AcceptInvalidCertificates)
                     {
                         // accept invalid certs
-                        _SslStream = new SslStream(_NetworkStream, false, new RemoteCertificateValidationCallback(AcceptCertificate));
+
+                        _SslStream = new SslStream(_NetworkStream, false, new RemoteCertificateValidationCallback(AcceptCertificate), null);
+                        //_SslStream = new SslStream(_NetworkStream, false, new RemoteCertificateValidationCallback(AcceptCertificate));
                     }
                     else
                     {
@@ -493,6 +495,7 @@ namespace SimpleTcp
 
             if (_Ssl)
             {
+                /*
                 if (String.IsNullOrEmpty(pfxPassword))
                 {
                     _SslCert = new X509Certificate2(pfxCertFilename);
@@ -505,7 +508,7 @@ namespace SimpleTcp
                 _SslCertCollection = new X509Certificate2Collection
                 {
                     _SslCert
-                };
+                };*/
             }
         }
 
